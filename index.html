@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immi — Your context. Anywhere.</title>
+  <meta name="description" content="Stop being a stranger to every AI you open. Immi gives your AI tools a memory that's owned by you, works everywhere, and never disappears.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- REPLACE: set favicon once brand assets exist -->
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0c0c0f;
+      --surface:   #13131a;
+      --border:    rgba(255, 255, 255, 0.07);
+      --text:      #b8b4ae;
+      --heading:   #edecea;
+      --accent:    #8b7cf7;
+      --accent-dim: rgba(139, 124, 247, 0.12);
+      --cta-bg:    #8b7cf7;
+      --cta-hover: #7c6be8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(139, 124, 247, 0.25);
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Primary CTA — waitlist */
+    .btn-primary {
+      display: inline-block;
+      background: var(--cta-bg);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Secondary CTA — $29 template */
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--heading);
+      font-size: 0.95rem;
+      font-weight: 400;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+      font-family: inherit;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.2); color: #fff; }
+
+    .cta-footnote {
+      font-size: 0.78rem;
+      color: rgba(184, 180, 174, 0.5);
+      margin-top: 1rem;
+    }
+
+    /* ── PROBLEM ─────────────────────────────────────────────────────────── */
+    .problem {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .problem-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .problem-inner p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .problem-inner strong {
+      color: var(--heading);
+      font-weight: 500;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────────────────────────── */
+    .how {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .step-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── PILLARS ─────────────────────────────────────────────────────────── */
+    .pillars {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+
+    .pillar {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .pillar-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 0.35rem;
+    }
+
+    .pillar p {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── WAITLIST SECTION ────────────────────────────────────────────────── */
+    .waitlist {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .waitlist h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .waitlist p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    /* Inline email form (fallback if Tally not yet configured) */
+    .email-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 400px;
+      margin: 0 auto 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .email-form input[type="email"] {
+      flex: 1;
+      min-width: 200px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--heading);
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: rgba(139, 124, 247, 0.5);
+    }
+
+    .email-form input::placeholder { color: rgba(184, 180, 174, 0.4); }
+
+    .already-have {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(184, 180, 174, 0.55);
+    }
+
+    .already-have a {
+      color: var(--heading);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(184, 180, 174, 0.4);
+    }
+
+    @media (max-width: 500px) {
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      nav { padding: 1rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Immi</span>
+    <span class="nav-badge">Beta</span>
+  </nav>
+
+  <!-- ── HERO ──────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow">Your context. Anywhere.</p>
+    <h1>Stop being a stranger to every AI you open.</h1>
+    <p class="hero-sub">
+      Immi gives your AI tools a memory that's owned by you, works with any AI you use,
+      and never disappears when a company shuts down or gets acquired.
+    </p>
+    <div class="cta-group">
+      <!--
+        REPLACE: set data-tally-open to your Tally waitlist form ID
+        e.g. data-tally-open="wMdxyz"
+        Tally popup script loads below.
+      -->
+      <button
+        class="btn-primary"
+        data-tally-open="WAITLIST_FORM_ID"
+        data-tally-width="480"
+        data-tally-overlay="1"
+        data-tally-emoji-text="👋"
+        data-tally-emoji-animation="wave">
+        Join the waitlist
+      </button>
+
+      <!--
+        REPLACE: set href to your Tally template purchase form URL
+        e.g. href="https://tally.so/r/wABxyz"
+      -->
+      <a class="btn-secondary" href="TEMPLATE_FORM_URL" target="_blank">
+        Start now — $29 vault template →
+      </a>
+    </div>
+    <p class="cta-footnote">Waitlist is free. No spam. Unsubscribe any time.</p>
+  </section>
+
+  <!-- ── PROBLEM ───────────────────────────────────────────────────────── -->
+  <section class="problem">
+    <div class="problem-inner">
+      <p>
+        Every AI conversation starts from zero.
+        <strong>You explain your role, your projects, your constraints — again.</strong>
+        Multiply that by eight conversations a day and you're losing half an hour
+        before the AI is actually useful.
+      </p>
+      <br>
+      <p>
+        Existing solutions are worse: your ChatGPT memory is on OpenAI's servers,
+        your Claude context is in Anthropic's infrastructure, your Limitless recordings
+        <strong>disappeared when Meta acquired it.</strong>
+        You don't own any of it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ──────────────────────────────────────────────────── -->
+  <section class="how">
+    <p class="section-label">How it works</p>
+    <div class="steps">
+      <div class="step">
+        <p class="step-num">01</p>
+        <h3>Build your vault</h3>
+        <p>Answer 10 questions about who you are, what you're working on, and how you think. Takes 3 minutes.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">02</p>
+        <h3>Get your context notes</h3>
+        <p>Immi generates two ready-to-paste files: one for work conversations, one for decisions. Your words, structured by us.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">03</p>
+        <h3>Paste once. Done.</h3>
+        <p>Open any AI, paste your work context at the top. The AI knows who you are from the first message — no re-explaining.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PILLARS ────────────────────────────────────────────────────────── -->
+  <section class="pillars">
+    <p class="section-label">What makes Immi different</p>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <p class="pillar-title">Ownership</p>
+        <p>Your vault is a folder of markdown files. Readable without Immi. Portable forever. No cloud lock-in.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-title">Portability</p>
+        <p>Works with Claude, ChatGPT, Gemini, or any AI you use. Not tied to one tool.</p>
+      </div>
+      <div class="pillar">
+        <p class="pillar-title">Accessibility</p>
+        <p>The right context for the right conversation — not a monolithic dump. Work context, decision context, or both.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAITLIST ───────────────────────────────────────────────────────── -->
+  <section class="waitlist" id="waitlist">
+    <h2>Get early access to Immi Pro</h2>
+    <p>The plugin automates everything above — one click to inject the right context into any AI conversation.</p>
+
+    <!--
+      REPLACE OPTION A: Replace the form below with a Tally embed script.
+      Go to your Tally waitlist form → Share → Embed → Standard → copy the script tag.
+
+      REPLACE OPTION B: Use the button above (already configured with data-tally-open).
+      In that case, hide this section and keep just the hero CTA.
+    -->
+    <form class="email-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" class="btn-primary">Notify me</button>
+    </form>
+
+    <p class="already-have">
+      Already want to start?
+      <!-- REPLACE: same Tally template form URL -->
+      <a href="TEMPLATE_FORM_URL" target="_blank">Get your personalized vault for $29 →</a>
+    </p>
+  </section>
+
+  <footer>
+    <span>© 2026 Immi</span>
+    <span>Built by Nithin · <a href="mailto:crazyeight0000@gmail.com" style="color:inherit">contact</a></span>
+  </footer>
+
+  <!-- Tally popup script — loads asynchronously, safe to leave even before form is configured -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
+
+  <script>
+    // Fallback for the inline email form (until Tally embed is wired up)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]').value;
+      // REPLACE: POST to your Tally API endpoint or swap for Tally popup
+      console.log('Waitlist signup:', email);
+      e.target.innerHTML = '<p style="color:var(--accent);font-size:0.9rem">You\'re on the list. We\'ll be in touch.</p>';
+    }
+  </script>
+
+</body>
+</html>
