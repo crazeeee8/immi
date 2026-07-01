@@ -426,8 +426,8 @@
       </div>
       <div class="step">
         <p class="step-num">03</p>
-        <h3>Paste once. Done.</h3>
-        <p>Open any AI, paste your work context at the top. The AI knows who you are from the first message — no re-explaining.</p>
+        <h3>Paste once. One click soon.</h3>
+        <p>Open any AI, paste your work context at the top. The AI knows who you are from the first message. When the plugin launches, this becomes one click — no pasting, no Obsidian open required.</p>
       </div>
     </div>
   </section>
@@ -463,15 +463,19 @@
       REPLACE OPTION B: Use the button above (already configured with data-tally-open).
       In that case, hide this section and keep just the hero CTA.
     -->
-    <form class="email-form" onsubmit="handleSubmit(event)">
-      <input type="email" placeholder="you@example.com" required autocomplete="email">
-      <button type="submit" class="btn-primary">Notify me</button>
-    </form>
+    <button
+      class="btn-primary"
+      data-tally-open="RGgLGj"
+      data-tally-width="480"
+      data-tally-overlay="1"
+      data-tally-emoji-text="👋"
+      data-tally-emoji-animation="wave">
+      Save my spot →
+    </button>
 
     <p class="already-have">
-      Already want to start?
-      <!-- REPLACE: same Tally template form URL -->
-      <a href="https://checkout.dodopayments.com/buy/pdt_0Ni1ahYkZ4jEa5RQgJCOH?quantity=1" target="_blank">Get your personalized vault for $29 →</a>
+      Want to start now?
+      <a href="https://checkout.dodopayments.com/buy/pdt_0Ni1ahYkZ4jEa5RQgJCOH?quantity=1" target="_blank">Get your $29 vault template →</a>
     </p>
   </section>
 
@@ -483,16 +487,6 @@
   <!-- Tally popup script — loads asynchronously, safe to leave even before form is configured -->
   <script async src="https://tally.so/widgets/embed.js"></script>
 
-  <script>
-    // Fallback for the inline email form (until Tally embed is wired up)
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = e.target.querySelector('input[type="email"]').value;
-      // REPLACE: POST to your Tally API endpoint or swap for Tally popup
-      console.log('Waitlist signup:', email);
-      e.target.innerHTML = '<p style="color:var(--accent);font-size:0.9rem">You\'re on the list. We\'ll be in touch.</p>';
-    }
-  </script>
 
 </body>
 </html>
